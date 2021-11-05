@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167971152-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167971152-1');
+</script>
+  <title>CFDGAN_Working</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href='https://fonts.googleapis.com/css?family=Adamina' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Assistant' rel='stylesheet'>
+
+  <link href='https://fonts.googleapis.com/css?family=Charmonman' rel='stylesheet'>
+  <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', filename='css/twentytwenty.css') }}" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+  <div class="front_page_container center_main clearfix">
+    <div class="text_box_for_title center clearfix">
+      <center>GENERATIVE ADVERSARIAL NETWORKS FOR FLOW APPROXIMATION OF AIRFOIL WITH REYNOLDS NUMBER INCREMENT <br> </center>
+    </div>
+    <div class="slider_container clearfix">
+
+      <div class="twentytwenty-container" data-orientation="vertical">
+        <div><img alt="before" src="{{ url_for('static',filename='img/b.png') }}" width=100% height=auto /></div>
+        <div><img alt="after" src="{{ url_for('static',filename='img/u.png') }}" width=100% height=auto /></div>
+      </div>
+  </div>
+</div>
+<div id = 'myDiv' class="flask_container">
+  <div class="heading"><br>Demo<br></div>
+  <div class="flask_app">
+
+  <center><b><h2>
+  <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+   {{ form_upload.hidden_tag() }}<emsp><emsp>
+   {{ form_upload.photo }}
+   {% for error in form_upload.photo.errors %}
+     <span style="color: red;">{{ error }}</span>
+   {% endfor %}
+   <br><br>
+   {{ form_upload.submit }}<br><br>
+  </form>
+
+  <form action="{{ url_for('show_result') }}" method="POST" enctype="multipart/form-data">
+   {{ form_result.Calculated_Parameters_Select.label}}
+   <emsp><emsp>{{ form_result.Calculated_Parameters_Select}}<emsp><emsp><emsp><emsp><emsp><emsp><emsp>
+   {{ form_result.Re_values_Select.label}}<emsp><emsp>
+   {{ form_result.Re_values_Select}}<br><br>
+	{{ form_result.get_output }}<br><br>
+
+
+  </form>
+
+  {% if file_url %}
+  <img src="{{ file_url }}" style="width:512px;height:512px;border:3px solid black">
+  <emsp>
+  {% endif %}
+
+
+  {% if result_url %}
+  <emsp>
+  <img id="img_result" src="{{ result_url }}" style="border:3px solid black">
+  <br> <br>
+  {% endif %}
+  </h2></b>
+  </center>
+
+
+</div>
+  </div>
+<div class = "about_the_project">
+<div class="heading"><br>About Us</div>
+<div class="about_text ">This is done by <b>Aagashram Neelakandan (312416114001)</b> and <b>Andrew Raymond Raj A (312416114015)</b> under the guidance of <b>Mr.J.Immanuel Durai Raj (M.Tech (CAD) (Ph.D))</b> in the partial fulfilment for the award of the degree of Bachelor of Engineering in Department of Mechanical Engineering at St. Joseph’s Institute Of Technology, OMR, Chennai-119.<br></div>
+
+<div class="heading"><br>Description and How to Use</div>
+<div class="about_text ">
+  <b>CFDGAN</b> is a Pix2Pix GAN made for CFD results. This site enables the user to upload the sketches of the various profiles and get the CFD results like Pressure and Velocity Contour for that profile for different Reynolds number. Currently, the model supports the input images which is to be in the form of profile to be analyzed covered in black with white background. Next, upload that image and select the Parameters and Re Value to click Show result to display the contours. You can change the Values and Show result to display the new results without having to upload the image again.<br>
+</div>
+
+</div>
+
+<div class="footer_notes">
+  <div class="footer_text">
+  If there is any fault or comments please mail to <b>cfdgansjit@gmail.com</b>
+</div>
+</div>
+
+
+  <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.2.1.min.js') }}" charset="utf-8"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.event.move.js') }}" charset="utf-8"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.twentytwenty.js') }}" charset="utf-8"></script>
+	<script>
+    $(function(){
+      $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.5, orientation: 'vertical', no_overlay: true});
+    });
+  </script>
+<!--
+<script>
+		var result_set = "scroll_down";
+        window[result_set]();
+  })
+</script>
+
+<script>
+$(function scroll_down() {
+    $('html, body').animate({
+        scrollTop: $("#myDiv").offset().top
+    }, 3000);
+  });
+</script>-->
+
+</body>
+</html>
