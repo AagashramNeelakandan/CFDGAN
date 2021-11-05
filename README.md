@@ -1,0 +1,3 @@
+# CFDGAN : A GENERATIVE ADVERSARIAL NETWORKS FOR FLOW APPROXIMATION
+
+CFDGAN is a Pix2Pix GAN made for CFD results. This site enables the user to upload the sketches of the various profiles and get the CFD results like Pressure and Velocity Contour for that profile for different Reynolds number. Currently, the model supports the input images which is to be in the form of profile to be analyzed covered in black with white background. Next, upload that image and select the Parameters and Re Value to click Show result to display the contours. You can change the Values and Show result to display the new results without having to upload the image again.
